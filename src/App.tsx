@@ -1,11 +1,12 @@
 import './App.css'
 import '@mantine/core/styles.css';
-import Profile from "./pages/Profile.tsx";
+import { Login } from './pages/Login';
+
 
 function App() {
     return (
         <div>
-            <Profile/>
+            <Login/>
         </div>
     );
 }
