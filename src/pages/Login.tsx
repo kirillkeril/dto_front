@@ -26,7 +26,7 @@ import {
         </Text>
   
         <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-          <TextInput label="Email" placeholder="examole@email.com" required />
+          <TextInput label="Email" placeholder="example@email.com" required />
           <PasswordInput label="Password" placeholder="Your password" required mt="md" />
           <Group justify="space-between" mt="lg">
             <Checkbox label="Запомнить меня" />
