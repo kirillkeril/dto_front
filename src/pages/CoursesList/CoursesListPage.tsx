@@ -1,11 +1,18 @@
 import {CoursesList} from "../../components/CoursesList/CoursesList.tsx";
 import {Text} from "@mantine/core";
+import {ICourse} from "../../types.ts";
+import {useEffect, useState} from "react";
+import {api} from "../../api.ts";
 
-interface Props {
-	courses: any[];
-}
+export const CoursesListPage = () => {
+	const [courses, setCourses] = useState<ICourse[]>([]);
 
-export const CoursesListPage = ({courses}: Props) => {
+	useEffect(() => {
+		api.getCourses().then(data => {
+			setCourses(data);
+		})
+	})
+
 	return (
 		<div>
 			<Text fw={'600'} fz={'xl'} ta={'center'}>Список курсов</Text>
