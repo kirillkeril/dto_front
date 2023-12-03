@@ -39,7 +39,7 @@ class API {
 
     getCourseById(id: number): Promise<ICourse> {
         return new Promise((resolve) => {
-            return resolve(COURSES.filter(item => item.id === id)[0])
+            return setTimeout(() => resolve(COURSES.filter(item => item.id === id)[0]), 1000)
         })
     }
 }

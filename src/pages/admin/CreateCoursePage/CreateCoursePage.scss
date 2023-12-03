@@ -1,0 +1,12 @@
+.pageWrapper {
+  padding: 0.5rem 1rem;
+  position: relative;
+}
+
+.formWrapper {
+  padding: 1rem 0;
+
+  .mantine-InputWrapper-root:not(:first-child) {
+    margin-top: 12px;
+  }
+}
