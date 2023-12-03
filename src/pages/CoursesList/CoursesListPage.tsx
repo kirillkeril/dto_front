@@ -5,8 +5,7 @@ interface Props {
 	courses: any[];
 }
 
-const CoursesListPage = ({courses}: Props) => {
-
+export const CoursesListPage = ({courses}: Props) => {
 	return (
 		<div>
 			<Text fw={'600'} fz={'xl'} ta={'center'}>Список курсов</Text>
@@ -14,5 +13,3 @@ const CoursesListPage = ({courses}: Props) => {
 		</div>
 	);
 };
-
-export default CoursesListPage;

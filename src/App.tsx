@@ -1,6 +1,7 @@
 import './App.css'
 import '@mantine/core/styles.css';
-import CoursesListPage from "./pages/CoursesList/CoursesListPage.tsx";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {CreateCoursePage, CoursesListPage} from "./pages";
 
 function App() {
 	const courses = [
@@ -31,9 +32,17 @@ function App() {
 		},
 	];
 	return (
-		<div>
-			<CoursesListPage courses={courses}/>
-		</div>
+		<BrowserRouter>
+			<Routes>
+				<Route path={'/admin'}>
+					<Route path={'/admin/course'}>
+						<Route path={'/admin/course/:courseId'} element={<CreateCoursePage/>}/>
+					</Route>
+				</Route>
+				<Route path={'/'} element={<CoursesListPage courses={courses}/>}>
+				</Route>
+			</Routes>
+		</BrowserRouter>
 	);
 }
 
