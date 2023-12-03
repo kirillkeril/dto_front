@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import {useForm} from "@mantine/form";
+import {isNotEmpty, useForm} from "@mantine/form";
 import {api} from "../../../api.ts";
-import {Box, Button, Group, LoadingOverlay, Textarea, TextInput, Title} from "@mantine/core";
+import {Box, Button, Group, LoadingOverlay, Textarea, TextInput, Title, Text} from "@mantine/core";
 import './CreateCoursePage.scss'
+import {notifications} from "@mantine/notifications";
+import {modals} from "@mantine/modals";
 
 
 export const CreateCoursePage: React.FC = () => {
@@ -14,6 +16,10 @@ export const CreateCoursePage: React.FC = () => {
         initialValues: {
             name: '',
             description: ''
+        },
+        validate: {
+            name: isNotEmpty('Введите название курса'),
+            description: isNotEmpty('Введите описание курса')
         }
     });
 
@@ -26,13 +32,49 @@ export const CreateCoursePage: React.FC = () => {
                     name: data.name,
                     description: data.description
                 })
-                form.resetDirty();
+                form.resetDirty({
+                    name: data.name,
+                    description: data.description
+                });
                 setIsFetching(false);
             }).catch(() => {
                 setIsFetching(false);
             })
         }
     }, [courseId])
+
+    const saveCourse = () => {
+        if (form.isValid()) {
+            notifications.show({
+                title: 'Курс отредактирован',
+                message: 'Но пока что в этом нельзя убедиться',
+                color: 'green'
+            })
+        } else {
+            form.validate();
+        }
+    }
+
+    const deleteCourse = () => {
+        modals.openConfirmModal({
+            title: 'Требуется подтверждение',
+            children: (
+                <Text size="sm">
+                    Вы действительно хотите удалить курс #{courseId}? Это действие нельзя будет отменить.
+                </Text>
+            ),
+            centered: true,
+            confirmProps: { color: 'red' },
+            labels: { confirm: 'Удалить курс', cancel: 'Отмена' },
+            onConfirm: () => {
+                notifications.show({
+                    title: 'Курс удалён',
+                    message: 'Но пока что в этом нельзя убедиться',
+                    color: 'red'
+                })
+            },
+        });
+    }
 
     return (
         <div>
@@ -50,12 +92,20 @@ export const CreateCoursePage: React.FC = () => {
                 </Box>
 
                 <Group>
-                    <Button>
-                        Сохранить
-                    </Button>
-                    <Button color={'red'}>
-                        Удалить курс
-                    </Button>
+                    {courseId !== 'new' ?
+                        <>
+                            <Button onClick={saveCourse} disabled={!form.isDirty()}>
+                                Сохранить
+                            </Button>
+                            <Button color={'red'} onClick={deleteCourse}>
+                                Удалить курс
+                            </Button>
+                        </>
+                        :
+                        <Button onClick={saveCourse}>
+                            Создать курс
+                        </Button>
+                    }
                 </Group>
             </Box>
         </div>
