@@ -1,0 +1,21 @@
+.listWrapper {
+    padding: 0.5rem 1rem;
+}
+
+.list {
+    padding: 0;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    list-style: none;
+    grid-gap: 1rem;
+}
+@media (min-width: 1280px) {
+    .list {
+        grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+    }
+}
+
+.listItem {
+    list-style: none;
+}
