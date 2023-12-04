@@ -15,13 +15,13 @@ import classes from './Login.module.css';
 export function Login() {
   return (
     <Container size={420} my={40}>
-      <Title ta="center" className={classes.title}>
+      <Title ta="center" fw={600} className={classes.title}>
         Авторизация
       </Title>
 
       <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-        <TextInput label="Email" placeholder="example@email.com" required />
-        <PasswordInput label="Password" placeholder="Your password" required mt="md" />
+        <TextInput label="Email" ta="left" placeholder="example@email.com" required />
+        <PasswordInput label="Password" ta="left" placeholder="Your password" required mt="md" />
         <Group justify="space-between" mt="lg">
           <Checkbox label="Запомнить меня" />
           <Anchor component="button" size="sm">
