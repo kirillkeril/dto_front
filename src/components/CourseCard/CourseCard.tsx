@@ -13,7 +13,7 @@ const CourseCard = ({course} : Props) => {
 
 	    <Text fw={'400'} mt={'md'}>{course.description}</Text>
 
-	    <Button variant="light" color="blue" fullWidth mt="md" radius="md">
+	    <Button color="blue" fullWidth mt="md" radius="md">
 		    Подробнее
 	    </Button>
     </Card>
