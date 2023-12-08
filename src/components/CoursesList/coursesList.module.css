@@ -10,6 +10,7 @@
     list-style: none;
     grid-gap: 1rem;
 }
+
 @media (min-width: 1280px) {
     .list {
         grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));

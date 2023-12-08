@@ -1,8 +1,8 @@
 import classes from "./profile.module.css";
-import {Button, Divider, Menu, MenuItem, Text, TextInput} from "@mantine/core";
+import {Button, Divider, Text, TextInput} from "@mantine/core";
 import {useForm} from "@mantine/form";
 
-function Profile() {
+export const Profile = () => {
     const form = useForm({});
 
     return (
@@ -71,5 +71,3 @@ function Profile() {
         </div>
     );
 }
-
-export default Profile
