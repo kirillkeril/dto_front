@@ -16,11 +16,13 @@
     "@mantine/modals": "^7.2.2",
     "@mantine/notifications": "^7.2.2",
     "axios": "^1.6.1",
+    "babel": "^6.23.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.20.1",
     "sass": "^1.69.5",
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "webpack": "^5.89.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
